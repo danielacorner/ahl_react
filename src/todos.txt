@@ -1,0 +1,2 @@
+- Connect FAB on mobile
+- Connect mobile (expand to?) modal & profile image
