@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 
-export default class Connect extends Component {
+const styles = {
+  listItem: {
+    listStyleType: 'none'
+  }
+};
+class Connect extends Component {
   state = {
     links: [
       {
@@ -22,12 +28,13 @@ export default class Connect extends Component {
     ]
   };
   render() {
+    const { classes } = this.props;
     return (
       <div>
-        <h1>Connect</h1>
+        <h2>Connect</h2>
         <ul>
           {this.state.links.map(link => (
-            <li key={link.text.toString()}>
+            <li key={link.text.toString()} className={classes.listItem}>
               <a href={link.link} target="_blank">
                 {link.text}
               </a>
@@ -38,3 +45,5 @@ export default class Connect extends Component {
     );
   }
 }
+
+export default withStyles(styles)(Connect);

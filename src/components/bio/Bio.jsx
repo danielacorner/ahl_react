@@ -2,29 +2,34 @@ import React, { Component } from 'react';
 import Connect from './connect/Connect';
 import { withStyles } from '@material-ui/core/styles';
 import Media from 'react-media';
+import profileImg from '../../Adrianne2018.jpg';
 
 const styles = {
-  root: {
-    color: 'red'
-  },
   bioGridContainer: {
     display: 'grid',
     gridTemplateColumns: '1.3fr 1fr'
+  },
+  bio: {
+    width: '100%'
   },
   imageGridContainer: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
     gridTemplateRows: '1fr 1fr'
+  },
+  profileImg: {
+    width: '245px'
   }
 };
 
 class Bio extends Component {
   render() {
+    const { classes } = this.props;
     return (
       <div>
         <h1>Adrianne H Lee</h1>
-        <div className={this.props.classes.bioGridContainer}>
-          <div className="bio">
+        <div className={classes.bioGridContainer}>
+          <div className={classes.bio}>
             <p>
               Hello, welcome to my simple-dimple website. I’m a user experience
               designer and researcher in Canada currently  working to improving
@@ -51,10 +56,11 @@ class Bio extends Component {
             query="(min-width: 599px)"
             render={() => (
               // tablet & desktop only
-              <div className={this.props.classes.imageGridContainer}>
+              <div className={classes.imageGridContainer}>
                 <div className="spacer" />
                 <img
-                  src="https://picsum.photos/300/300"
+                  className={classes.profileImg}
+                  src={profileImg}
                   alt="Adrianne H. Lee"
                 />
                 <Connect />

@@ -8,7 +8,9 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-media": "^1.8.0",
-    "react-scripts": "1.1.5"
+    "react-scripts": "1.1.5",
+    "react-sticky-el": "^1.0.20",
+    "react-sticky-state": "^2.1.9"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -5,6 +5,7 @@ import Bio from './components/bio/Bio';
 import Works from './components/works/Works';
 import WorkLinks from './components/work-links/WorkLinks';
 import { withStyles } from '@material-ui/core/styles';
+import Media from 'react-media';
 
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -17,6 +18,11 @@ const theme = createMuiTheme({
 });
 
 const styles = {
+  container: {
+    width: '100%',
+    maxWidth: '1000px',
+    margin: 'auto'
+  },
   workGrid: {
     display: 'grid',
     gridTemplateColumns: '1fr 3fr',
@@ -25,15 +31,29 @@ const styles = {
 };
 class App extends Component {
   render() {
+    const { classes } = this.props;
     return (
       <MuiThemeProvider theme={theme}>
-        <div>
+        <div className={classes.container}>
           {/* <NavBar /> */}
           <Bio />
-          <div className={this.props.classes.workGrid}>
-            <WorkLinks />
-            <Works />
-          </div>
+          <Media query="(max-width: 599px)">
+            {matches =>
+              matches ? (
+                // mobile
+                <div>
+                  <WorkLinks />
+                  <Works />
+                </div>
+              ) : (
+                // tablet & desktop
+                <div className={this.props.classes.workGrid}>
+                  <WorkLinks />
+                  <Works />
+                </div>
+              )
+            }
+          </Media>
         </div>
       </MuiThemeProvider>
     );

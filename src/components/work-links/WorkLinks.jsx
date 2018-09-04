@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import Sticky from 'react-sticky-el';
+import Media from 'react-media';
 
-export default class WorkLinks extends Component {
+const styles = {};
+
+class WorkLinks extends Component {
   state = {
     title: 'Work Preview 2017-18',
     innerHtml: `Here is a sample of challenges I had the pleasure of working on in 2017-18. 
@@ -22,19 +27,46 @@ export default class WorkLinks extends Component {
   };
 
   render() {
-    const { title, innerHtml, links } = this.state;
+    const { title, links } = this.state;
     return (
       <div>
-        <h2>{title}</h2>
-        <p>{innerHtml}</p>
-        <ul>
-          {links.map(link => (
-            <li key={link.text.toString()}>
-              <a href={link.link}>{link.text}</a>
-            </li>
-          ))}
-        </ul>
+        <Media query="(max-width: 599px)">
+          {matches =>
+            matches ? (
+              // mobile
+              <div>
+                <h2>{title}</h2>
+                <div className="innerHtml" />
+                <ul>
+                  {links.map(link => (
+                    <li key={link.text.toString()}>
+                      <a href={link.link}>{link.text}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              // tablet & desktop
+              <Sticky>
+                <h2>{title}</h2>
+                <div className="innerHtml" />
+                <ul>
+                  {links.map(link => (
+                    <li key={link.text.toString()}>
+                      <a href={link.link}>{link.text}</a>
+                    </li>
+                  ))}
+                </ul>
+              </Sticky>
+            )
+          }
+        </Media>
       </div>
     );
   }
+  componentDidMount() {
+    document.querySelector('.innerHtml').innerHTML = this.state.innerHtml;
+  }
 }
+
+export default withStyles(styles)(WorkLinks);
