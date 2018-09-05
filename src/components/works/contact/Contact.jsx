@@ -92,7 +92,7 @@ class Contact extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    const receiverEmail = 'danielcorner7@gmail.com',
+    const receiverEmail = 'adriannehlee@gmail.com',
       template = 'adrianneportfolio';
 
     this.sendEmail(
