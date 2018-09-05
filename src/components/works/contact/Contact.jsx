@@ -39,20 +39,25 @@ const ModalContents = styled.div`
   background-color: white;
   box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14),
     0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
-  padding: 47px 23px 167px 23px;
+  padding: 47px 23px 87px 23px;
+  width: 75%;
   @media only screen and ${Breakpoints.mobile.minWidth} {
     padding: 125px;
+    width: 60%;
   }
+  div {
+    margin-top: 0;
+  }
+  margin: auto;
   position: relative;
   border: 2px solid rgba(0, 0, 0, 0.9);
-  margin: auto;
-  width: 80%;
   height: auto;
 `;
 
 const ModalTitle = styled.div`
   font-family: PT Sans;
   font-size: 36px;
+  margin-bottom: 5px;
   @media only screen and ${Breakpoints.mobile.minWidth} {
     font-size: 72px;
   }
@@ -90,7 +95,8 @@ const styles = theme => ({
   textFieldMultiline: { backgroundColor: '#F1F1F1' },
   sendButton: {
     color: 'black',
-    marginTop: '23px',
+    marginTop:
+      window.innerWidth > Breakpoints.mobile.minWidthValue ? '23px' : '3px',
     textTransform: 'none',
     height: '49px',
     width: '101px',
