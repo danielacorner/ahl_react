@@ -51,7 +51,14 @@ const styles = {
     bottom: '20px',
     right: '20px',
     width: '91px',
-    height: '91px'
+    height: '91px',
+    textTransform: 'none',
+    fontSize: '18px',
+    fontFamily: 'PT Sans',
+    fontWeight: 'normal',
+    border: '2px solid rgba(0,0,0,0.9)',
+    backgroundColor: 'white',
+    color: 'black'
   },
   closeButton: {
     position: 'absolute',

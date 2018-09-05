@@ -4,6 +4,7 @@ import Media from 'react-media';
 import profileImg from '../../Adrianne2018.jpg';
 import styled from 'styled-components';
 import FloatingConnect from './floating-connect/FloatingConnect';
+import Breakpoints from '../../Breakpoints';
 
 const Container = styled.div`
   margin-bottom: 37px;
@@ -16,7 +17,7 @@ const ImageGridContainer = styled.div`
   grid-column-gap: 8px;
 `;
 const BioGridContainer = styled.div`
-  @media only screen and (min-width: 992px) {
+  @media only screen and ${Breakpoints.desktop.minWidth} {
     max-width: none;
     display: grid;
     grid-template-columns: 1.3fr 1fr;
@@ -51,7 +52,7 @@ class Bio extends Component {
             <p>
               Here are some key things that make me excited to do the work I do
               - solving the right problems, developing candid and meaningful
-              relationships with my coworkers, and learning everyday.
+              relationships with my coworkers, and learning every day.
             </p>
             <p>
               I am flexible and proficient with my tools. My favourites are
@@ -62,10 +63,14 @@ class Bio extends Component {
             <p>
               I work with Jumping Elephants, a design consultancy in Ottawa. I
               graduated from the Industrial Design, Bachelor of Design program
-              from OCAD University. For my full résumé, please see here.
+              from OCAD University. For my full résumé, please see{' '}
+              <a href="#" style={{ color: 'black' }}>
+                here
+              </a>
+              .
             </p>
           </BioText>
-          <Media query="(min-width: 992px)">
+          <Media query={Breakpoints.desktop.minWidth}>
             {matches =>
               matches ? ( // mobile
                 // tablet & desktop only

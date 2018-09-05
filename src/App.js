@@ -10,6 +10,7 @@ import Media from 'react-media';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import { createMuiTheme } from '@material-ui/core/styles';
 import blue from '@material-ui/core/colors/blue';
+import Breakpoints from './Breakpoints';
 
 const theme = createMuiTheme({
   palette: {
@@ -19,16 +20,22 @@ const theme = createMuiTheme({
   }
 });
 const BorderBox = styled.div`
-  border: 2px solid rgba(0, 0, 0, 0.9);
-  margin: 44px;
+  margin: auto;
+  @media only screen and ${Breakpoints.mobile.minWidth} {
+    border: 2px solid rgba(0, 0, 0, 0.9);
+    margin: 44px;
+  }
 `;
 const Container = styled.div`
   width: 100%;
   margin: auto;
   box-sizing: border-box;
   font-family: PT Sans;
-  max-width: 511px;
-  @media only screen and (min-width: 992px) {
+  max-width: 301px;
+  @media only screen and ${Breakpoints.mobile.minWidth} {
+    max-width: 511px;
+  }
+  @media only screen and ${Breakpoints.desktop.minWidth} {
     max-width: 1080px;
     padding: 50px;
   }
@@ -41,6 +48,15 @@ const WorkGrid = styled.div`
     padding-top: 25px;
   }
 `;
+const BuiltByDC = styled.div`
+  bottom: 0px;
+  font-family: PT Sans;
+  font-size: 18px;
+  margin: 0 0 50px 25px;
+  a {
+    color: black;
+  }
+`;
 
 class App extends Component {
   render() {
@@ -50,7 +66,7 @@ class App extends Component {
           <Container>
             {/* <NavBar /> */}
             <Bio />
-            <Media query="(max-width: 991px)">
+            <Media query={Breakpoints.desktop.maxWidth}>
               {matches =>
                 matches ? (
                   // mobile
@@ -69,6 +85,16 @@ class App extends Component {
             </Media>
           </Container>
         </BorderBox>
+        <BuiltByDC>
+          Built by&nbsp;
+          <a
+            href="https://dcorn068.github.io/"
+            target="_blank"
+            aria-label="Daniel Corner's portfolio"
+          >
+            Daniel Corner
+          </a>
+        </BuiltByDC>
       </MuiThemeProvider>
     );
   }

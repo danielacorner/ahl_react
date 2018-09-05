@@ -7,48 +7,81 @@ import styled from 'styled-components';
 // import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import Media from 'react-media';
+import Breakpoints from '../../../Breakpoints';
 
+// media queries: mobile-first, then tablet, then desktop
 const CTAContainer = styled.div`
-  width: 450px;
-  display: flex;
   height: 100%;
-  margin: -5px auto 55px auto;
-  @media only screen and (min-width: 992px) {
+  width: 100%;
+  margin: auto;
+  margin: -40px auto 125px auto;
+  @media only screen and ${Breakpoints.mobile.minWidth} {
+    margin: -40px auto 25px auto;
+    display: flex;
+    width: 450px;
+  }
+  @media only screen and ${Breakpoints.desktop.minWidth} {
     margin: -45px auto 15px auto;
   }
 `;
 const Span = styled.span`
-  margin: auto 0 auto 10px;
   font-size: 18px;
+  display: block;
+  text-align: center;
+  width: auto;
+  margin: 15px 0 auto 10px;
+  @media only screen and ${Breakpoints.mobile.minWidth} {
+    margin: auto 0 auto 10px;
+  }
 `;
 const ModalContents = styled.div`
+  background-color: white;
+  box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14),
+    0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
+  padding: 47px 23px 167px 23px;
+  @media only screen and ${Breakpoints.mobile.minWidth} {
+    padding: 125px;
+  }
   position: relative;
   border: 2px solid rgba(0, 0, 0, 0.9);
   margin: auto;
   width: 80%;
   height: auto;
 `;
+
 const ModalTitle = styled.div`
-  font-size: 72px;
   font-family: PT Sans;
+  font-size: 36px;
+  @media only screen and ${Breakpoints.mobile.minWidth} {
+    font-size: 72px;
+  }
+`;
+const CloseButtonDiv = styled.div`
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  @media only screen and ${Breakpoints.mobile.minWidth} {
+    bottom: null;
+    top: 20px;
+  }
 `;
 const ButtonContainer = styled.div`
   display: grid;
   grid-template-columns: auto 100px;
 `;
 const styles = theme => ({
-  modal: {
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: '125px'
-  },
-  contactButton: {
-    display: 'inline-block',
+  getInTouchButton: {
+    display: 'block',
     textTransform: 'none',
     fontFamily: 'PT Sans',
     height: '62px',
     width: '152px',
-    fontSize: '18px'
+    fontSize: '18px',
+    margin: '10px auto',
+    border: '2px solid rgba(0,0,0,0.9)',
+    borderRadius: '0px',
+    color: 'black'
   },
   textField: {
     display: 'block',
@@ -56,16 +89,17 @@ const styles = theme => ({
   },
   textFieldMultiline: { backgroundColor: '#F1F1F1' },
   sendButton: {
+    color: 'black',
     marginTop: '23px',
     textTransform: 'none',
     height: '49px',
     width: '101px',
-    fontSize: '18px'
+    fontSize: '18px',
+    border: '2px solid rgba(0,0,0,0.9)',
+    borderRadius: '0px',
+    fontFamily: 'PT Sans'
   },
   closeButton: {
-    position: 'absolute',
-    top: '20px',
-    right: '20px',
     border: '2px solid rgba(0,0,0,0.9)',
     borderRadius: '100%'
   }
@@ -137,20 +171,19 @@ class Contact extends Component {
           size="large"
           variant="outlined"
           color="primary"
-          className={classes.contactButton}
+          className={classes.getInTouchButton}
           onClick={this.handleOpen}
         >
           Get in touch
         </Button>
         <Span>for the full work sample document.</Span>
-
         <Modal
           open={this.state.open}
           onClose={this.handleClose}
           style={{ display: 'flex' }}
         >
           <ModalContents>
-            <div className={classes.modal}>
+            <CloseButtonDiv>
               <IconButton
                 onClick={this.handleClose}
                 className={classes.closeButton}
@@ -160,52 +193,52 @@ class Contact extends Component {
                   style={{ transform: 'scale(1.5)', color: 'rgba(0,0,0,0.8)' }}
                 />
               </IconButton>
-              <ModalTitle>Get in touch</ModalTitle>
-              <form noValidate autoComplete="off">
-                <TextField
-                  id="name"
-                  label="Name"
-                  className={classes.textField}
-                  value={this.state.name}
-                  onChange={this.handleChange('name')}
-                  margin="normal"
-                  fullWidth={true}
-                />
-                <TextField
-                  id="email"
-                  label="Email"
-                  className={classes.textField}
-                  value={this.state.email}
-                  onChange={this.handleChange('email')}
-                  margin="normal"
-                  fullWidth={true}
-                />
-                <TextField
-                  id="message"
-                  label="Message"
-                  multiline
-                  rows="10"
-                  className={classes.textFieldMultiline}
-                  value={this.state.message}
-                  onChange={this.handleChange('message')}
-                  margin="normal"
-                  fullWidth={true}
-                />
-              </form>
-              <ButtonContainer>
-                <div className="spacer" />
-                <Button
-                  id="sendButton"
-                  variant="outlined"
-                  color="primary"
-                  className={classes.sendButton}
-                  type="submit"
-                  onClick={this.handleSubmit}
-                >
-                  {this.state.formSubmitted ? 'Sending...' : 'Send'}
-                </Button>
-              </ButtonContainer>
-            </div>
+            </CloseButtonDiv>
+            <ModalTitle>Get in touch</ModalTitle>
+            <form noValidate autoComplete="off">
+              <TextField
+                id="name"
+                label="Name"
+                className={classes.textField}
+                value={this.state.name}
+                onChange={this.handleChange('name')}
+                margin="normal"
+                fullWidth={true}
+              />
+              <TextField
+                id="email"
+                label="Email"
+                className={classes.textField}
+                value={this.state.email}
+                onChange={this.handleChange('email')}
+                margin="normal"
+                fullWidth={true}
+              />
+              <TextField
+                id="message"
+                label="Message"
+                multiline
+                rows="10"
+                className={classes.textFieldMultiline}
+                value={this.state.message}
+                onChange={this.handleChange('message')}
+                margin="normal"
+                fullWidth={true}
+              />
+            </form>
+            <ButtonContainer>
+              <div className="spacer" />
+              <Button
+                id="sendButton"
+                variant="outlined"
+                color="primary"
+                className={classes.sendButton}
+                type="submit"
+                onClick={this.handleSubmit}
+              >
+                {this.state.formSubmitted ? 'Sending...' : 'Send'}
+              </Button>
+            </ButtonContainer>
           </ModalContents>
         </Modal>
       </CTAContainer>

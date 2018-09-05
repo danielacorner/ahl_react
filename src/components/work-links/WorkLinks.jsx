@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import Sticky from 'react-sticky-el';
 import Media from 'react-media';
 import styled from 'styled-components';
+import Breakpoints from '../../Breakpoints';
 
 const Header = styled.h2`
   font-weight: normal;
   margin: 28px 0 0 0;
   font-size: 36px;
-  @media only screen and (min-width: 992px) {
+  @media only screen and ${Breakpoints.desktop.minWidth} {
     margin: 0;
     font-size: 54px;
   }
@@ -27,16 +28,16 @@ const WorkPreviewText = styled.div`
   margin: 0.5em 0 2em 0;
 `;
 const LinkButton = styled.span`
-cursor: pointer;
-text-decoration: underline;
-&:hover {
-  background-color: #8FFF00;
-}
-`
+  cursor: pointer;
+  text-decoration: underline;
+  &:hover {
+    background-color: #8fff00;
+  }
+`;
 const getInTouchSpanStyles = `
 cursor: pointer;
 text-decoration: underline;
-`
+`;
 
 class WorkLinks extends Component {
   state = {
@@ -59,15 +60,17 @@ class WorkLinks extends Component {
     ]
   };
 
-  handleClick = (id) => {
-    document.querySelector("#work"+id).scrollIntoView({block: "start", behavior: 'smooth'})
-  }
+  handleClick = id => {
+    document
+      .querySelector('#work' + id)
+      .scrollIntoView({ block: 'start', behavior: 'smooth' });
+  };
 
   render() {
     const { title, links } = this.state;
     return (
       <div>
-        <Media query="(max-width: 991px)">
+        <Media query={Breakpoints.desktop.maxWidth}>
           {matches =>
             matches ? ( // mobile
               <div>
@@ -76,7 +79,9 @@ class WorkLinks extends Component {
                 <WorkLinksList>
                   {links.map(link => (
                     <WorkLink key={link.text.toString()}>
-                      <LinkButton onClick={() => this.handleClick(link.id)}>{link.text}</LinkButton>
+                      <LinkButton onClick={() => this.handleClick(link.id)}>
+                        {link.text}
+                      </LinkButton>
                     </WorkLink>
                   ))}
                 </WorkLinksList>
@@ -88,7 +93,9 @@ class WorkLinks extends Component {
                 <WorkLinksList>
                   {links.map(link => (
                     <WorkLink key={link.text.toString()}>
-                      <LinkButton onClick={() => this.handleClick(link.id)}>{link.text}</LinkButton>
+                      <LinkButton onClick={() => this.handleClick(link.id)}>
+                        {link.text}
+                      </LinkButton>
                     </WorkLink>
                   ))}
                 </WorkLinksList>
@@ -107,10 +114,10 @@ class WorkLinks extends Component {
 
     GITspan.addEventListener('mouseover', () => {
       GITspan.style.backgroundColor = '#8FFF00';
-    }) 
+    });
     GITspan.addEventListener('mouseout', () => {
       GITspan.style.backgroundColor = null;
-    }) 
+    });
   }
 }
 

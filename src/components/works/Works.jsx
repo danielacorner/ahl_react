@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Modal from '@material-ui/core/Modal';
 import Contact from './contact/Contact';
 import styled from 'styled-components';
+import Breakpoints from '../../Breakpoints';
 
 const WorkTitle = styled.div`
   font-size: 36px;
@@ -11,7 +12,7 @@ const WorkText = styled.p`
   font-size: 18px;
   line-height: 1.5em;
   margin: 0.5em 0 1.5em 0;
-  @media only screen and (min-width: 992px) {
+  @media only screen and ${Breakpoints.desktop.minWidth} {
     margin: 0.5em 0 2.5em 0;
   }
 `;
@@ -33,7 +34,7 @@ class Works extends Component {
         id: '1',
         title: 'House of Commons Intranet',
         text:
-        'House of Commons is in the process of redesigning Source, the intranet for Ministers of Parliament and their staff. The UX team at House of Commons defined the rough design strategy and Jumping Elephants was invited to facilitate the research and design activities.',
+          'House of Commons is in the process of redesigning Source, the intranet for Ministers of Parliament and their staff. The UX team at House of Commons defined the rough design strategy and Jumping Elephants was invited to facilitate the research and design activities.',
         images: [
           {
             src: 'https://picsum.photos/750/450',
@@ -51,7 +52,7 @@ class Works extends Component {
         id: '2',
         title: 'UX Lead at Global Affairs Canada',
         text:
-        'Some text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis debitis eveniet molestiae laudantium alias, tempora quidem atque sed laborum aliquam modi suscipit eum illo amet quod vel iusto odit iste.',
+          'Some text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis debitis eveniet molestiae laudantium alias, tempora quidem atque sed laborum aliquam modi suscipit eum illo amet quod vel iusto odit iste.',
         images: [
           {
             src: 'https://picsum.photos/750/450',
@@ -102,7 +103,7 @@ class Works extends Component {
       <div>
         {this.state.works.map(work => (
           <div key={work.title.toString()}>
-            <WorkTitle id={"work"+work.id}>{work.title}</WorkTitle>
+            <WorkTitle id={'work' + work.id}>{work.title}</WorkTitle>
             <WorkText>{work.text}</WorkText>
             <ImagesContainer>
               {work.images.map(image => (
