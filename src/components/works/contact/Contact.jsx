@@ -210,6 +210,7 @@ class Contact extends Component {
                 onChange={this.handleChange('name')}
                 margin="normal"
                 fullWidth={true}
+                required={true}
               />
               <TextField
                 id="email"
@@ -219,6 +220,7 @@ class Contact extends Component {
                 onChange={this.handleChange('email')}
                 margin="normal"
                 fullWidth={true}
+                required={true}
               />
               <TextField
                 id="message"
@@ -230,6 +232,7 @@ class Contact extends Component {
                 onChange={this.handleChange('message')}
                 margin="normal"
                 fullWidth={true}
+                required={true}
               />
             </form>
             <ButtonContainer>
