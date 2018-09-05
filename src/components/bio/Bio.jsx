@@ -3,6 +3,7 @@ import Connect from './connect/Connect';
 import Media from 'react-media';
 import profileImg from '../../Adrianne2018.jpg';
 import styled from 'styled-components';
+import FloatingConnect from './floating-connect/FloatingConnect';
 
 const Container = styled.div`
   margin-bottom: 37px;
@@ -64,18 +65,21 @@ class Bio extends Component {
               from OCAD University. For my full résumé, please see here.
             </p>
           </BioText>
-          <Media
-            query="(min-width: 992px)"
-            render={() => (
-              // tablet & desktop only
-              <ImageGridContainer>
-                <div className="spacer" />
-                <ProfileImg src={profileImg} alt="Adrianne H. Lee" />
-                <Connect />
-                <div className="spacer" />
-              </ImageGridContainer>
-            )}
-          />
+          <Media query="(min-width: 992px)">
+            {matches =>
+              matches ? ( // mobile
+                // tablet & desktop only
+                <ImageGridContainer>
+                  <div className="spacer" />
+                  <ProfileImg src={profileImg} alt="Adrianne H. Lee" />
+                  <Connect />
+                  <div className="spacer" />
+                </ImageGridContainer>
+              ) : (
+                <FloatingConnect />
+              )
+            }
+          </Media>
         </BioGridContainer>
       </Container>
     );

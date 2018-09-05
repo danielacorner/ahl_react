@@ -9,13 +9,12 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
 const CTAContainer = styled.div`
-width: 450px;
-display: flex;
-height: 100%;
-margin: -5px auto 55px auto;
-@media only screen and (min-width: 992px) {
-  margin: -45px auto 15px auto;
-
+  width: 450px;
+  display: flex;
+  height: 100%;
+  margin: -5px auto 55px auto;
+  @media only screen and (min-width: 992px) {
+    margin: -45px auto 15px auto;
   }
 `;
 const Span = styled.span`
@@ -51,7 +50,9 @@ const styles = theme => ({
     width: '152px',
     fontSize: '18px'
   },
-  textField: { display: 'block', backgroundColor: '#F1F1F1',
+  textField: {
+    display: 'block',
+    backgroundColor: '#F1F1F1'
   },
   textFieldMultiline: { backgroundColor: '#F1F1F1' },
   sendButton: {
@@ -76,7 +77,7 @@ class Contact extends Component {
     name: '',
     email: '',
     message: '',
-    formSubmitted: false,
+    formSubmitted: false
   };
 
   // modal
@@ -88,15 +89,20 @@ class Contact extends Component {
   handleClose = () => {
     this.setState({ open: false });
   };
-  handleSubmit = (event) => {
-    event.preventDefault()
+  handleSubmit = event => {
+    event.preventDefault();
 
-    const receiverEmail = "adriannehlee@gmail.com",
-      template = "adrianneportfolio"
+    const receiverEmail = 'danielcorner7@gmail.com',
+      template = 'adrianneportfolio';
 
-    this.sendEmail(template, this.state.email, receiverEmail, this.state.message)
+    this.sendEmail(
+      template,
+      this.state.email,
+      receiverEmail,
+      this.state.message
+    );
 
-    this.setState({formSubmitted: true})
+    this.setState({ formSubmitted: true });
   };
 
   // textarea
@@ -105,56 +111,105 @@ class Contact extends Component {
       [name]: event.target.value
     });
   };
-  
+
   sendEmail = (templateId, senderEmail, receiverEmail, message) => {
-     window.emailjs.send(
-      'gmail',
-      templateId,
-      {
+    window.emailjs
+      .send('gmail', templateId, {
         senderEmail,
         receiverEmail,
         message
       })
       .then(res => {
-        this.setState({ open: false })
-        window.alert("Thanks for reaching out!")
+        this.setState({ open: false });
+        window.alert('Thanks for reaching out!');
       })
       // Handle errors here however you like, or use a React error boundary
-      .catch(err => console.error('Failed to send email. Error: ', err))
-  }
-
+      .catch(err => console.error('Failed to send email. Error: ', err));
+  };
 
   render() {
     const { classes } = this.props;
 
-    return <CTAContainer>
-        <Button id="btnGetInTouch" size="large" variant="outlined" color="primary" className={classes.contactButton} onClick={this.handleOpen}>
+    return (
+      <CTAContainer>
+        <Button
+          id="btnGetInTouch"
+          size="large"
+          variant="outlined"
+          color="primary"
+          className={classes.contactButton}
+          onClick={this.handleOpen}
+        >
           Get in touch
         </Button>
         <Span>for the full work sample document.</Span>
 
-        <Modal open={this.state.open} onClose={this.handleClose} style={{ display: 'flex' }}>
+        <Modal
+          open={this.state.open}
+          onClose={this.handleClose}
+          style={{ display: 'flex' }}
+        >
           <ModalContents>
             <div className={classes.modal}>
-              <IconButton onClick={this.handleClose} className={classes.closeButton} aria-label="Close">
-                <CloseIcon style={{ transform: 'scale(1.5)' }} />
+              <IconButton
+                onClick={this.handleClose}
+                className={classes.closeButton}
+                aria-label="Close"
+              >
+                <CloseIcon
+                  style={{ transform: 'scale(1.5)', color: 'rgba(0,0,0,0.8)' }}
+                />
               </IconButton>
               <ModalTitle>Get in touch</ModalTitle>
-              <form action="mailto:danielcorner7@gmail.com?subject=subject&body=body" method="post" encType="text/plain" noValidate autoComplete="off">
-                <TextField id="name" label="Name" className={classes.textField} value={this.state.name} onChange={this.handleChange('name')} margin="normal" fullWidth={true} />
-                <TextField id="email" label="Email" className={classes.textField} value={this.state.email} onChange={this.handleChange('email')} margin="normal" fullWidth={true} />
-                <TextField id="message" label="Message" multiline rows="10" className={classes.textFieldMultiline} value={this.state.message} onChange={this.handleChange('message')} margin="normal" fullWidth={true} />
+              <form noValidate autoComplete="off">
+                <TextField
+                  id="name"
+                  label="Name"
+                  className={classes.textField}
+                  value={this.state.name}
+                  onChange={this.handleChange('name')}
+                  margin="normal"
+                  fullWidth={true}
+                />
+                <TextField
+                  id="email"
+                  label="Email"
+                  className={classes.textField}
+                  value={this.state.email}
+                  onChange={this.handleChange('email')}
+                  margin="normal"
+                  fullWidth={true}
+                />
+                <TextField
+                  id="message"
+                  label="Message"
+                  multiline
+                  rows="10"
+                  className={classes.textFieldMultiline}
+                  value={this.state.message}
+                  onChange={this.handleChange('message')}
+                  margin="normal"
+                  fullWidth={true}
+                />
               </form>
               <ButtonContainer>
                 <div className="spacer" />
-                <Button id="sendButton" variant="outlined" color="primary" className={classes.sendButton} type="submit" onClick={this.handleSubmit}>
-                  {this.state.formSubmitted ? "Sending..." : "Send"}
+                <Button
+                  id="sendButton"
+                  variant="outlined"
+                  color="primary"
+                  className={classes.sendButton}
+                  type="submit"
+                  onClick={this.handleSubmit}
+                >
+                  {this.state.formSubmitted ? 'Sending...' : 'Send'}
                 </Button>
               </ButtonContainer>
             </div>
           </ModalContents>
         </Modal>
-      </CTAContainer>;
+      </CTAContainer>
+    );
   }
 }
 
