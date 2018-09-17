@@ -3,6 +3,8 @@ import Modal from '@material-ui/core/Modal';
 import Contact from './contact/Contact';
 import styled from 'styled-components';
 import Breakpoints from '../../Breakpoints';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 const WorkTitle = styled.div`
   font-size: 36px;
@@ -118,8 +120,22 @@ class Works extends Component {
         <Modal // modal={false} // actions={actions}
           open={this.state.open}
           onBackdropClick={this.handleClose}
+          onEscapeKeyDown={this.handleClose}
         >
-          <img src={this.state.currentImg} alt="" style={{ width: '100%' }} />
+          <div>
+            <IconButton
+              aria-label="close"
+              style={{
+                position: 'fixed',
+                top: 5,
+                left: 5
+              }}
+              onClick={this.handleClose}
+            >
+              <CloseIcon />
+            </IconButton>
+            <img src={this.state.currentImg} alt="" style={{ width: '100%' }} />
+          </div>
         </Modal>
       </div>
     );

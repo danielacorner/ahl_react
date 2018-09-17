@@ -67,6 +67,7 @@ class Bio extends Component {
               <a
                 href="https://drive.google.com/file/d/1Z0u0vxWN-Bz2IJ3w15U1EbikD9eoiG-N/view?usp=sharing"
                 target="_blank"
+                rel="noopener noreferrer"
                 style={{ color: 'black' }}
               >
                 here
