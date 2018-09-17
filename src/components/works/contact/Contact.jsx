@@ -7,7 +7,6 @@ import styled from 'styled-components';
 // import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import Media from 'react-media';
 import Breakpoints from '../../../Breakpoints';
 
 // media queries: mobile-first, then tablet, then desktop
@@ -92,7 +91,6 @@ const styles = theme => ({
       border: '2px solid rgba(0,0,0,0.9)'
     },
     transition: 'background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;'
-
   },
   textField: {
     display: 'block',

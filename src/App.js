@@ -90,6 +90,7 @@ class App extends Component {
           <a
             href="https://dcorn068.github.io/"
             target="_blank"
+            rel="noopener noreferrer"
             aria-label="Daniel Corner's portfolio"
           >
             Daniel Corner

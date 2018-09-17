@@ -82,15 +82,16 @@ class Connect extends Component {
       },
       {
         text: 'Résumé',
-        link: ''
+        link:
+          'https://drive.google.com/file/d/1Z0u0vxWN-Bz2IJ3w15U1EbikD9eoiG-N/view?usp=sharing'
       },
       {
         text: 'Professional face',
-        link: ''
+        link: 'https://www.linkedin.com/in/adriannehlee/'
       },
       {
         text: 'Casual 280 characters',
-        link: ''
+        link: 'https://twitter.com/adriannehlee'
       }
     ],
     open: false

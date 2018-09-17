@@ -12,11 +12,11 @@ const LinksList = styled.ul`
 const Link = styled.li`
   list-style-type: none;
   font-size: 18px;
-  color: rgba(0,0,0,0.9);
+  color: rgba(0, 0, 0, 0.9);
   line-height: 1.5em;
   &:hover {
-  background-color: #8FFF00;
-}
+    background-color: #8fff00;
+  }
 `;
 
 class Connect extends Component {
@@ -28,15 +28,16 @@ class Connect extends Component {
       },
       {
         text: 'Résumé',
-        link: ''
+        link:
+          'https://drive.google.com/file/d/1Z0u0vxWN-Bz2IJ3w15U1EbikD9eoiG-N/view?usp=sharing'
       },
       {
         text: 'Professional face',
-        link: ''
+        link: 'https://www.linkedin.com/in/adriannehlee/'
       },
       {
         text: 'Casual 280 characters',
-        link: ''
+        link: 'https://twitter.com/adriannehlee'
       }
     ]
   };
@@ -47,7 +48,7 @@ class Connect extends Component {
         <LinksList>
           {this.state.links.map(link => (
             <Link key={link.text.toString()}>
-              <a style={{color: 'black'}} href={link.link} target="_blank">
+              <a style={{ color: 'black' }} href={link.link} target="_blank">
                 {link.text}
               </a>
             </Link>

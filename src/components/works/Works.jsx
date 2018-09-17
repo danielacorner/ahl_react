@@ -19,11 +19,6 @@ const WorkText = styled.p`
 const ImagesContainer = styled.div`
   margin-bottom: 42px;
 `;
-const SmallImage = styled.img`
-  width: 100%;
-  margin: 20px 0px;
-  cursor: pointer;
-`;
 
 class Works extends Component {
   state = {

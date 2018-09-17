@@ -64,7 +64,11 @@ class Bio extends Component {
               I work with Jumping Elephants, a design consultancy in Ottawa. I
               graduated from the Industrial Design, Bachelor of Design program
               from OCAD University. For my full résumé, please see{' '}
-              <a href="#" target="_blank" style={{ color: 'black' }}>
+              <a
+                href="https://drive.google.com/file/d/1Z0u0vxWN-Bz2IJ3w15U1EbikD9eoiG-N/view?usp=sharing"
+                target="_blank"
+                style={{ color: 'black' }}
+              >
                 here
               </a>
               .
@@ -72,8 +76,7 @@ class Bio extends Component {
           </BioText>
           <Media query={Breakpoints.desktop.minWidth}>
             {matches =>
-              matches ? ( // mobile
-                // tablet & desktop only
+              matches ? ( // tablet & desktop only // mobile
                 <ImageGridContainer>
                   <div className="spacer" />
                   <ProfileImg src={profileImg} alt="Adrianne H. Lee" />
