@@ -47,7 +47,7 @@ class Connect extends Component {
         <LinksList>
           {this.state.links.map(link => (
             <Link key={link.text.toString()}>
-              <a href={link.link} target="_blank">
+              <a style={{color: 'black'}} href={link.link} target="_blank">
                 {link.text}
               </a>
             </Link>

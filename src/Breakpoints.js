@@ -1,19 +1,23 @@
+const BreakpointsValues = {
+  mobile: 690,
+  desktop: 1136,
+}
 const Breakpoints = {
   mobile: {
-    minWidth: '(min-width: 590px)',
-    minWidthValue: 590,
-    maxWidth: '(max-width: 589px)',
-    maxWidthValue: 589
+    minWidth: `(min-width: ${BreakpointsValues.mobile}px)`,
+    minWidthValue: BreakpointsValues.mobile,
+    maxWidth: `(max-width: ${BreakpointsValues.mobile-1}px)`,
+    maxWidthValue: BreakpointsValues.mobile-1
   },
   // tablet: { //using the other breakpoints instead
   //   minWidth: null,
   //   maxWidth: null
   // },
   desktop: {
-    minWidth: '(min-width: 1136px)',
-    minWidthValue: 1136,
-    maxWidth: '(max-width: 1135px)',
-    minWidthValue: 1135
+    minWidth: `(min-width: ${BreakpointsValues.desktop}px)`,
+    minWidthValue: BreakpointsValues.desktop,
+    maxWidth: `(max-width: ${BreakpointsValues.desktop-1}px)`,
+    minWidthValue: BreakpointsValues.desktop-1
   }
 };
 export default Breakpoints;

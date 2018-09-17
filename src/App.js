@@ -52,7 +52,7 @@ const BuiltByDC = styled.div`
   bottom: 0px;
   font-family: PT Sans;
   font-size: 18px;
-  margin: 0 0 50px 25px;
+  margin: -30px 0 15px 45px;
   a {
     color: black;
   }

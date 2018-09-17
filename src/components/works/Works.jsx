@@ -37,14 +37,12 @@ class Works extends Component {
           'House of Commons is in the process of redesigning Source, the intranet for Ministers of Parliament and their staff. The UX team at House of Commons defined the rough design strategy and Jumping Elephants was invited to facilitate the research and design activities.',
         images: [
           {
-            src: 'https://picsum.photos/750/450',
-            largeImageURL: 'https://picsum.photos/1200/800',
-            alt: 'Mouseover text for image 1'
-          },
-          {
-            src: 'https://picsum.photos/750/450',
-            largeImageURL: 'https://picsum.photos/1200/800',
-            alt: 'Mouseover text for image 2'
+            src:
+              'https://image.ibb.co/n3WrKz/Adrianne_Lee_Portfolio_Aug13_005.jpg',
+            largeImageURL:
+              'https://image.ibb.co/n3WrKz/Adrianne_Lee_Portfolio_Aug13_005.jpg',
+            alt:
+              '(Page from portfolio) A sample of personas used during the project.'
           }
         ]
       },
@@ -52,17 +50,15 @@ class Works extends Component {
         id: '2',
         title: 'UX Lead at Global Affairs Canada',
         text:
-          'Some text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis debitis eveniet molestiae laudantium alias, tempora quidem atque sed laborum aliquam modi suscipit eum illo amet quod vel iusto odit iste.',
+          'Global Affairs Canada (GAC) is a federal department that is in the process of growing in-house UX expertise. For a period of 6 weeks, I was invited to lead UX research and design activities for the Web Communications team and to train the team on UX tools and techniques.',
         images: [
           {
-            src: 'https://picsum.photos/750/450',
-            largeImageURL: 'https://picsum.photos/1200/800',
-            alt: 'Mouseover text for image 1'
-          },
-          {
-            src: 'https://picsum.photos/750/450',
-            largeImageURL: 'https://picsum.photos/1200/800',
-            alt: 'Mouseover text for image 2'
+            src:
+              'https://image.ibb.co/ixNLCK/Adrianne_Lee_Portfolio_Aug13_021.jpg',
+            largeImageURL:
+              'https://image.ibb.co/ixNLCK/Adrianne_Lee_Portfolio_Aug13_021.jpg',
+            alt:
+              "(Page from portfolio) Text about addressing the GAC team's assumptions. List of questions used during a workshop with the team to address assumptions."
           }
         ]
       },
@@ -70,17 +66,15 @@ class Works extends Component {
         id: '3',
         title: 'Pave: Canadian Job Explorer',
         text:
-          'Some text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis debitis eveniet molestiae laudantium alias, tempora quidem atque sed laborum aliquam modi suscipit eum illo amet quod vel iusto odit iste.',
+          'Pave is an online tool that helps students plan their future. This project emerged from and placed 3rd place in a 6-week long competition (the Student Pathways Challenge) held by the Government of Ontario and the Brookfield Institute.',
         images: [
           {
-            src: 'https://picsum.photos/750/450',
-            largeImageURL: 'https://picsum.photos/1200/800',
-            alt: 'Mouseover text for image 1'
-          },
-          {
-            src: 'https://picsum.photos/750/450',
-            largeImageURL: 'https://picsum.photos/1200/800',
-            alt: 'Mouseover text for image 2'
+            src:
+              'https://image.ibb.co/bVxyzz/Adrianne_Lee_Portfolio_Aug13_013.jpg',
+            largeImageURL:
+              'https://image.ibb.co/bVxyzz/Adrianne_Lee_Portfolio_Aug13_013.jpg',
+            alt:
+              'Text explaining the problem identification and user segmentation process. Includes a diagram of user segmentation quadrant.'
           }
         ]
       }
@@ -107,11 +101,17 @@ class Works extends Component {
             <WorkText>{work.text}</WorkText>
             <ImagesContainer>
               {work.images.map(image => (
-                <SmallImage
+                <img
+                  style={{
+                    width: '100%',
+                    margin: '20px 0px',
+                    cursor: 'pointer'
+                  }}
+                  onClick={() => this.handleOpen(image.largeImageURL)}
                   key={image.alt.toString()}
                   src={image.src}
                   alt={image.alt}
-                  onClick={() => this.handleOpen(image.largeImageURL)}
+                  title={image.alt}
                 />
               ))}
             </ImagesContainer>
@@ -120,8 +120,7 @@ class Works extends Component {
         <div>
           <Contact />
         </div>
-        <Modal // actions={actions}
-          // modal={false}
+        <Modal // modal={false} // actions={actions}
           open={this.state.open}
           onBackdropClick={this.handleClose}
         >

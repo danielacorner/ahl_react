@@ -86,7 +86,13 @@ const styles = theme => ({
     margin: '10px auto',
     border: '2px solid rgba(0,0,0,0.9)',
     borderRadius: '0px',
-    color: 'black'
+    color: 'black',
+    '&:hover': {
+      backgroundColor: '#ebebeb',
+      border: '2px solid rgba(0,0,0,0.9)'
+    },
+    transition: 'background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;'
+
   },
   textField: {
     display: 'block',
@@ -103,7 +109,12 @@ const styles = theme => ({
     fontSize: '18px',
     border: '2px solid rgba(0,0,0,0.9)',
     borderRadius: '0px',
-    fontFamily: 'PT Sans'
+    fontFamily: 'PT Sans',
+    '&:hover': {
+      backgroundColor: '#ebebeb',
+      border: '2px solid rgba(0,0,0,0.9)'
+    },
+    transition: 'background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;'
   },
   closeButton: {
     border: '2px solid rgba(0,0,0,0.9)',

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Connect from './connect/Connect';
 import Media from 'react-media';
-import profileImg from '../../Adrianne2018.jpg';
+import profileImg from '../../images/Adrianne2018.jpg';
 import styled from 'styled-components';
 import FloatingConnect from './floating-connect/FloatingConnect';
 import Breakpoints from '../../Breakpoints';
@@ -64,7 +64,7 @@ class Bio extends Component {
               I work with Jumping Elephants, a design consultancy in Ottawa. I
               graduated from the Industrial Design, Bachelor of Design program
               from OCAD University. For my full résumé, please see{' '}
-              <a href="#" style={{ color: 'black' }}>
+              <a href="#" target="_blank" style={{ color: 'black' }}>
                 here
               </a>
               .

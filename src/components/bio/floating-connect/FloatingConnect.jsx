@@ -6,7 +6,7 @@ import Modal from '@material-ui/core/Modal';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Zoom from '@material-ui/core/Zoom';
-import profileImg from '../../../Adrianne2018.jpg';
+import profileImg from '../../../images/Adrianne2018.jpg';
 
 const Header = styled.div`
   margin: 0;
@@ -58,7 +58,11 @@ const styles = {
     fontWeight: 'normal',
     border: '2px solid rgba(0,0,0,0.9)',
     backgroundColor: 'white',
-    color: 'black'
+    color: 'black',
+    '&:hover': {
+      backgroundColor: '#ebebeb',
+      border: '2px solid rgba(0,0,0,0.9)'
+    }
   },
   closeButton: {
     position: 'absolute',
@@ -119,7 +123,7 @@ class Connect extends Component {
         <Modal
           open={this.state.open}
           onClose={this.handleClose}
-          style={{ display: 'flex' }}
+          style={{ display: 'flex', fontFamily: 'PT Sans' }}
         >
           <ModalContents>
             <div>
@@ -128,7 +132,11 @@ class Connect extends Component {
               <LinksList>
                 {this.state.links.map(link => (
                   <Link key={link.text.toString()}>
-                    <a href={link.link} target="_blank">
+                    <a
+                      style={{ color: 'black' }}
+                      href={link.link}
+                      target="_blank"
+                    >
                       {link.text}
                     </a>
                   </Link>
