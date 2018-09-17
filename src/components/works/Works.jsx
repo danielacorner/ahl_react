@@ -128,7 +128,7 @@ class Works extends Component {
               style={{
                 position: 'fixed',
                 top: 5,
-                left: 5
+                right: 5
               }}
               onClick={this.handleClose}
             >

@@ -21,7 +21,7 @@ const Link = styled.li`
   font-size: 18px;
   color: rgba(0, 0, 0, 0.9);
   line-height: 2em;
-  &:hover {
+  & a:hover {
     background-color: #8fff00;
   }
 `;

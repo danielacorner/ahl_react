@@ -5,16 +5,17 @@ import profileImg from '../../images/Adrianne2018.jpg';
 import styled from 'styled-components';
 import FloatingConnect from './floating-connect/FloatingConnect';
 import Breakpoints from '../../Breakpoints';
+import { withStyles } from '@material-ui/core';
 
 const Container = styled.div`
   margin-bottom: 37px;
 `;
 const ImageGridContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 256px auto;
-  // grid-row-gap: 19px;
-  grid-column-gap: 8px;
+  grid-template-columns: 230px 245px;
+  grid-template-rows: 1fr 1fr;
+  grid-row-gap: 18px;
+  // grid-column-gap: 24px;
 `;
 const BioGridContainer = styled.div`
   @media only screen and ${Breakpoints.desktop.minWidth} {
@@ -36,9 +37,14 @@ const ProfileImg = styled.img`
   width: 245px;
   height: 256px;
 `;
-
+const styles = {
+  highlightLink: {
+    '&:hover': { backgroundColor: '#8fff00' }
+  }
+};
 class Bio extends Component {
   render() {
+    const { classes } = this.props;
     return (
       <Container>
         <Title>Adrianne H Lee</Title>
@@ -68,7 +74,10 @@ class Bio extends Component {
                 href="https://drive.google.com/file/d/1Z0u0vxWN-Bz2IJ3w15U1EbikD9eoiG-N/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: 'black' }}
+                style={{
+                  color: 'black'
+                }}
+                className={classes.highlightLink}
               >
                 here
               </a>
@@ -95,4 +104,4 @@ class Bio extends Component {
   }
 }
 
-export default Bio;
+export default withStyles(styles)(Bio);
