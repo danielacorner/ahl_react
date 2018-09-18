@@ -12,9 +12,9 @@ const Container = styled.div`
 `;
 const ImageGridContainer = styled.div`
   display: grid;
-  grid-template-columns: 230px 245px;
-  grid-template-rows: 1fr 1fr;
-  grid-row-gap: 18px;
+  grid-template-columns: 215px 245px;
+  grid-template-rows: 246px 175px;
+  // grid-row-gap: 0px;
   // grid-column-gap: 24px;
 `;
 const BioGridContainer = styled.div`
@@ -32,6 +32,7 @@ const Title = styled.p`
 const BioText = styled.div`
   font-size: 18px;
   width: 100%;
+  min-width: 429px;
 `;
 const ProfileImg = styled.img`
   width: 245px;
